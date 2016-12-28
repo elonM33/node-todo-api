@@ -27,4 +27,6 @@ app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
 
-//console.log("eliminare this one")
+module.exports = {
+  app
+};
