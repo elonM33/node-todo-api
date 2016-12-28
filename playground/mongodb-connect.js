@@ -1,4 +1,7 @@
 const {MongoClient, ObjectID} = require('mongodb');
+const shortid = require('shortid');
+
+shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
 MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   if (err) {
@@ -28,6 +31,17 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   //   console.log(JSON.stringify(result.ops, undefined, 2));
   //
   // });
+
+  db.collection('Users').insertOne({
+    _comment: "rid = relative identifier",
+    rid: shortid.generate(),
+    name: 'Maximilian',
+    age: 28,
+    location: 'USA'
+  }, (err, res) => {
+    if (err) return console.log("Error trying to insert a user", err);
+    console.log(JSON.stringify(res.ops, undefined, 2));
+  });
 
   db.close();
 });
