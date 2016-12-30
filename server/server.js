@@ -6,8 +6,8 @@ const { mongoose } = require('./db/mongoose');
 const { Todo } = require('./models/todo');
 const { User } = require('./models/user');
 
-const port = 3000;
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -38,14 +38,15 @@ app.get('/todos/:id', (req, res) => {
   let id = req.params.id;
 
   if (!ObjectID.isValid(id)){
-    res.status(400).send('Id not valid');
+    return res.status(404).send('Id not valid');
   }
 
   Todo.findById(id).then((todo) => {
     if (!todo) {
-      res.status(400).send('There is not todo with that id');
+      return res.status(404).send('Todo not found');
     }
-    res.status(200).send(todo);
+
+    res.status(200).send({todo});
   }, (err) => {
     res.status(400).send(err);
   }).catch((err) => {
@@ -58,4 +59,4 @@ app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
 
-module.exports = {app};
+module.exports = { app };
