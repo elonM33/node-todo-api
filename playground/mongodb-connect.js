@@ -35,7 +35,8 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   db.collection('Users').insertOne({
     _comment: "rid = relative identifier",
     rid: shortid.generate(),
-    name: 'Maximilian',
+    _id: new ObjectID(),
+    name: 'Corita',
     age: 28,
     location: 'USA'
   }, (err, res) => {
