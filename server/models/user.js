@@ -72,8 +72,7 @@ UserSchema.statics.findByToken = function (token) {
 
 UserSchema.pre('save', function (next) {
   let user = this;
-  console.log('pre save');
-  console.log(user);
+  // console.log('pre save');
   if (user.isModified('password')) {
     let password = user.password;
 
@@ -86,7 +85,6 @@ UserSchema.pre('save', function (next) {
   } else {
     next();
   }
-
 
 });
 
