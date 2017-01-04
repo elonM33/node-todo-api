@@ -9,9 +9,11 @@ if (env === 'development' || env === 'test') {
   });
 }
 
-if (env === 'production') {
-  process.env.MONGODB_URI = 'mongodb://tofful:123456@ds149268.mlab.com:49268/todoapp';
-}
+// ADDED this variable MONGODB_URI in Heroku by running
+// -> heroku config:set MONGODB_URI=mongodb://tofful:123456@ds149268.mlab.com:49268/todoapp
+// if (env === 'production') {
+//   process.env.MONGODB_URI = 'mongodb://tofful:123456@ds149268.mlab.com:49268/todoapp';
+// }
 
 // switch (env) {
 //   case 'development':
