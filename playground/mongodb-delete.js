@@ -12,11 +12,11 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   // });
 
   // --> deleteOne
-  // db.collection('Todos').deleteOne({
-  //   text: 'Eat lunch'
-  // }).then((res) => {
-  //   console.log(res)
-  // });
+  db.collection('Todos').deleteOne({
+    text: 'Eat lunch'
+  }).then((res) => {
+    console.log(res);
+  });
 
   // db.collection('Todos').findOneAndDelete({
   //   completed: false
@@ -30,11 +30,11 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
   //   console.log(`Deleted user ${res.value.name}`);
   // });
 
-  db.collection('Users').deleteMany({
-    name: 'Maximilian'
-  }).then((res) => {
-    console.log(res);
-  });
+  // db.collection('Users').deleteMany({
+  //   name: 'Maximilian'
+  // }).then((res) => {
+  //   console.log(res);
+  // });
 
 
 // db.close();
