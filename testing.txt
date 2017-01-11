@@ -1,2 +1,2 @@
 added a line here.
-- CHanged TEXT
+Changed TEXT
